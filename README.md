@@ -1,6 +1,8 @@
 # Timeline Visualization Component
 
 A React component for visualizing items on a timeline with drag-and-drop, resizing, and editing capabilities.
+![image](https://github.com/user-attachments/assets/0861acc2-5448-4d77-8e23-dfd3880d775f)
+
 
 ## Features
 
