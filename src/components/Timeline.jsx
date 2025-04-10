@@ -20,7 +20,6 @@ const Timeline = ({ items }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
   const [resizeDirection, setResizeDirection] = useState(null);
-  const [debugMessage, setDebugMessage] = useState('');
   const [clickStarted, setClickStarted] = useState(false);
   const [containerWidth, setContainerWidth] = useState(0);
   const timelineRef = useRef(null);
@@ -69,7 +68,6 @@ const Timeline = ({ items }) => {
       prev.map(item => item.id === id ? { ...item, name: newName } : item)
     );
     setEditingItemId(null);
-    setDebugMessage(`Item ${id} name changed to "${newName}"`);
   };
   
   // Handle item resize or drag
@@ -77,12 +75,6 @@ const Timeline = ({ items }) => {
     setTimelineItems(prev => 
       prev.map(item => item.id === id ? { ...item, start: newStart, end: newEnd } : item)
     );
-    
-    if (isResizing) {
-      setDebugMessage(`Item ${id} resized: ${newStart} to ${newEnd} (${resizeDirection} handle)`);
-    } else if (isDragging) {
-      setDebugMessage(`Item ${id} moved: ${newStart} to ${newEnd}`);
-    }
   };
 
   // Handle lane change
@@ -142,12 +134,9 @@ const Timeline = ({ items }) => {
       }
       
       if (!foundGap) {
-        setDebugMessage(`Couldn't find available space in lane ${newLaneIndex}. Item remains in original position.`);
         return;
       }
     }
-    
-    setDebugMessage(`Item ${id} moved to lane ${newLaneIndex}`);
   };
   
   // Handle mousedown on timeline
@@ -184,7 +173,6 @@ const Timeline = ({ items }) => {
       
       setTimelineItems(prev => [...prev, newItem]);
       setEditingItemId(newItem.id);
-      setDebugMessage(`New item created at ${format(clickDate, 'yyyy-MM-dd')}`);
     }
     
     setClickStarted(false);
@@ -193,13 +181,11 @@ const Timeline = ({ items }) => {
   const handleResizeStart = (direction) => {
     setIsResizing(true);
     setResizeDirection(direction);
-    setDebugMessage(`Resize started: ${direction} handle`);
     setClickStarted(false);
   };
 
   const handleResizeEnd = () => {
     setIsResizing(false);
-    setDebugMessage(`Resize ended: ${resizeDirection} handle`);
   };
   
   return (
@@ -208,11 +194,6 @@ const Timeline = ({ items }) => {
         <button onClick={handleZoomOut}>-</button>
         <span>Zoom: {Math.round(zoom * 100)}%</span>
         <button onClick={handleZoomIn}>+</button>
-        {debugMessage && (
-          <div className="debug-message">
-            {debugMessage}
-          </div>
-        )}
       </div>
       
       <div className="timeline-wrapper">

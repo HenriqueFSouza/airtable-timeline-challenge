@@ -326,9 +326,6 @@ const TimelineItem = ({
               {format(itemStartDate, 'MMM d')} - {format(itemEndDate, 'MMM d, yyyy')}
             </div>
             
-            {onColorChange && (
-              <div className="color-indicator" title="Right-click to change color"></div>
-            )}
           </>
         )}
       </div>
