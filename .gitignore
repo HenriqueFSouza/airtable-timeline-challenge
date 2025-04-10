@@ -1,0 +1,23 @@
+# Dependências
+node_modules
+/.pnp
+.pnp.js
+
+
+# Produção/build
+/dist
+/build
+
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs
+*.log
+
+# Cache
+.parcel-cache
+.cache
+.eslintcache

@@ -1,0 +1,84 @@
+.timeline-axis {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.month-labels {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  min-height: 20px;
+}
+
+.month-label {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-right: 1px solid #e0e0e0;
+  background-color: #fafafa;
+  padding: 0 8px;
+  box-sizing: border-box;
+  min-width: 10px;
+}
+
+/* Ajuste o tamanho da fonte para meses quando o espaço for muito pequeno */
+@media (max-width: 768px) {
+  .month-label {
+    font-size: 12px;
+    padding: 0 2px;
+  }
+}
+
+.date-ticks {
+  position: relative;
+  height: 30px;
+  width: 100%;
+}
+
+.date-tick {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  min-width: 2px;
+}
+
+.tick-line {
+  width: 1px;
+  height: 6px;
+  background-color: #aaa;
+  margin-bottom: 4px;
+}
+
+.tick-label {
+  font-size: 11px;
+  color: #333;
+  white-space: nowrap;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Ajuste o tamanho da fonte para datas quando o espaço for muito pequeno */
+@media (max-width: 768px) {
+  .tick-label {
+    font-size: 9px;
+  }
+} 
